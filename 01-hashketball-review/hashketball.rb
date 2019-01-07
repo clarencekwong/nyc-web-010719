@@ -215,7 +215,41 @@ end
 # 1. give me all the players with assists > 5
 # [{}, {}, {}]
 
+def player_assist_greater_5
+  all_players.select do |player_hash|
+    player_hash[:assists]
+  end
+end
+
+
 # 2. give me an array of just the player names
 # ["", "", ""]
 
+def player_names_only
+  all_players.map do |player_hash|
+    player_hash[:player_name]
+  end
+end
+
+#binding.pry
 # 3. Convert each one to an each
+
+def player_assist_greater_5_each
+  player_assist_list = []
+  all_players.each do |player_hash|
+    if player_hash[:assists] > 5
+      player_assist_list << player_hash
+    end
+  end
+  player_assist_list
+end
+
+def player_names_only_each
+  player_names_only_list = []
+  all_players.each do |player_hash|
+    player_names_only_list << player_hash[:player_name]
+  end
+  player_names_only_list
+end
+
+#binding.pry
