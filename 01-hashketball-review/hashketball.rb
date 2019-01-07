@@ -153,11 +153,69 @@ end
 
 # get the home players and add it to the away players
   # home players
-home_players = game_hash[:home][:players]
-  # away players
-away_players = game_hash[:away][:players]
-  # then add them ()
-# all_players = home_players.concat(away_players)
-all_players = home_players + away_players
+  # Single Responsibility Principle
+def all_players
+  home_players = game_hash[:home][:players]
+    # away players
+  away_players = game_hash[:away][:players]
+    # then add them ()
+  # all_players = home_players.concat(away_players)
+  # all_players = home_players + away_players
+  home_players + away_players
+end
 
+def find_player(player_name)
+  all_players.find do |player_hash|
+    player_hash[:player_name] == player_name
+  end
+end
+# naming is HARD!!
+                      # string
+def num_points_scored(player_name)
+  # is that the right way?
+  # problem solving?
+  # iterate through the player names <= we already have all the players
+  # all_players.each do |player_hash| # This is a Hash with player data # many iterator methods
+  #   # if the player name matches the given arguement
+  #   # binding.pry
+  #   if player_hash[:player_name] == player_name
+  #     # take the score
+  #     return player_hash[:points]
+  #   end
+  # end
+
+  # binding.pry
+
+  # found_player = all_players.find do |player_hash|
+  #   player_hash[:player_name] == player_name
+  # end
+  find_player(player_name)[:points] # the last line is what is returned as your condition
+
+  # binding.pry
+
+    ## each => returns the original array; it can do whatever it wants inside => Array
+      # WILL WORK FOR ANYTHING IF YOU ARE CREATIVE ENOUGH
+    # find => return the first thing that matches the condition you give it => ???
+    ## select => returns all elements that match the condition you give it => Array
+    ## map => returns a changed array => Array
+
+  # returns nil when nothing is in it
+end
+
+def shoe_size(player_name)
+  # pretty much the same steps
+
+  find_player(player_name)[:shoe]
+end
 # binding.pry
+
+# Homework
+# map, select
+
+# 1. give me all the players with assists > 5
+# [{}, {}, {}]
+
+# 2. give me an array of just the player names
+# ["", "", ""]
+
+# 3. Convert each one to an each
